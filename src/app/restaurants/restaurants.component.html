@@ -1,0 +1,15 @@
+<section>
+    <header>
+        <button mat-button [matMenuTriggerFor]="menu">Opções</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="newRestaurant()">
+                <mat-icon>add</mat-icon>
+                Cadastrar Restaurantes
+            </button>
+            <button mat-menu-item (click)="exit()">
+                <mat-icon>logout</mat-icon>
+                Sair
+            </button>
+        </mat-menu>
+    </header>
+</section>
