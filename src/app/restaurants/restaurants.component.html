@@ -13,5 +13,39 @@
         </mat-menu>
     </header>
 
+    <div id="restaurantes">
+        <h1>Restaurantes</h1>
+        <mat-form-field appearance="outline">
+            <mat-label>Busque por uma cidade ou nome do restaurante</mat-label>
+            <input matInput placeholder="Tente 'Jundiai', ou 'Restaurante da fazenda'" [(ngModel)]="pesquisar"
+                [ngModelOptions]="{standalone: true}">
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+
+        <section id="restaurantes-cards">
+            <mat-card *ngFor="let restaurante of restaurantes">
+                <mat-card-title>
+                    {{restaurante["nome"]}}
+                </mat-card-title>
+                <mat-card-subtitle>
+                    {{restaurante["descricao"]}}
+                </mat-card-subtitle>
+                <p style="font-size: 10px; text-align: left; font-weight: 600;">
+                    Criado por: {{restaurante["autor_restaurante"]}} em {{restaurante["criado_em "] | date: 'short'}}
+                </p>
+                <div id="toBottom">
+                    <div>
+                        <mat-icon>location_on</mat-icon>
+                        <p>Jundiaí, São Paulo</p>
+                    </div>
+                    <button mat-flat-button color='primary' (click)="openRestaurant(restaurante)">
+                        <mat-icon>visibility</mat-icon>
+                    </button>
+                </div>
+            </mat-card>
+        </section>
+    </div>
+
+
 
 </section>

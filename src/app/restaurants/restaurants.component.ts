@@ -46,11 +46,32 @@ export class RestaurantsComponent implements OnInit {
   }
 
   newRestaurant() {
-    console.log("new Restaurant");
+    const dialog_ref = this.dialog.open(NewRestaurantComponent, {
+      width: '80%',
+      height: 'max-content',
+      data: {
+        usuario: '',
+        siglas: this.siglas
+      }
+    });
+
+    dialog_ref.afterClosed().subscribe((data: any) => {
+      this.restaurantes.push(data);
+    });
+
   }
 
   exit() {
-    console.log("bye Restaurant");
+    console.log("close restaurant.");
+  }
+
+  openRestaurant(restaurante: any) {
+    this.dialog.open(IndividualRestaurantComponent, {
+      width: "80%",
+      height: "98vh",
+      data: restaurante,
+      panelClass: "custom-dialog-container"
+    });
   }
 
 }

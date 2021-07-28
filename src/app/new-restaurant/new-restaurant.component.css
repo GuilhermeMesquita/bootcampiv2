@@ -1,0 +1,74 @@
+form {
+    display: flex;
+    flex-direction: column;
+}
+form #form {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+form #form #inputs {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+form #form #inputs mat-form-field {
+    width: 100%;
+}
+form #form #imagem-upload {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+form #form #imagem-upload #anx {
+    background-color: #000;
+    color: #fff;
+}
+form #form #imagem-upload div {
+    margin-bottom: 16px;
+}
+form #form #imagem-upload div:last-child {
+    margin: 0;
+}
+form #form #imagem-upload #imagem-content {
+    width: 300px;
+    background: #000 5b;
+    border: 3px dotted #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+form #form #imagem-upload #imagem-content mat-icon {
+    color: #292828 a6;
+    font-size: 100px;
+    height: auto;
+    width: auto;
+}
+form #form #imagem-upload #rating {
+    display: flex;
+}
+form #form #imagem-upload #rating .ic {
+    color: #fffc3a;
+}
+form #acoes {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+form #acoes div {
+    width: 100%;
+    text-align: center;
+}
+form #acoes div button {
+    width: 30%;
+    margin: auto;
+    background-color: #750505;
+    color: #fff;
+}
+form #acoes div button:last-child {
+    margin-top: 16px;
+}
