@@ -18,13 +18,17 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NewRestaurantComponent } from './new-restaurant/new-restaurant.component';
+import { IndividualRestaurantComponent } from './individual-restaurant/individual-restaurant.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RestaurantsComponent
+    RestaurantsComponent,
+    NewRestaurantComponent,
+    IndividualRestaurantComponent
   ],
   imports: [
     /**Requisição HttpClient */
