@@ -1,9 +1,18 @@
+import { environment } from './../environments/environment.prod';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+/**Http Client */
+import { HttpClientModule } from '@angular/common/http';
+
+/**Firebase */
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 /**Material Imports */
 import { MatCardModule } from '@angular/material/card';
@@ -17,7 +26,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
-import { HttpClientModule } from '@angular/common/http';
 import { NewRestaurantComponent } from './new-restaurant/new-restaurant.component';
 import { IndividualRestaurantComponent } from './individual-restaurant/individual-restaurant.component';
 
@@ -31,6 +39,12 @@ import { IndividualRestaurantComponent } from './individual-restaurant/individua
     IndividualRestaurantComponent
   ],
   imports: [
+
+    /**Firebase */
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+
     /**Requisição HttpClient */
     HttpClientModule,
     AppRoutingModule,
