@@ -32,16 +32,29 @@
             <mat-card *ngFor="let comentario of array_comentarios_usuarios">
                 <div id="usuario">
                     <div>
-                        <span>Comentado em: <i>{{comentario.comentadoEm | date: 'short'}}</i></span>
+                        <img [src]="comentario.autor.foto" width="30">
+                        <span>{{ comentario.autor.nome }} - <i>{{ formatDate(comentario.comentado_em.seconds)
+                                }}</i></span>
                     </div>
+                    <mat-icon id="excluir-comentario">
+                        delete
+                    </mat-icon>
+
                 </div>
-                <p>"{{comentario.comentario}}"</p>
-                <div id="star-rating">
-                    <button mat-icon-button class="ic"
-                        *ngFor="let rating_id of array_comentarios_usuarios_avaliacao;index as i">
-                        <mat-icon>{{showIcon(comentario.estrelas, i)}}</mat-icon>
-                    </button>
-                </div>
+                <mat-card *ngFor="let comentario of array_comentarios_usuarios">
+                    <div id="usuario">
+                        <div>
+                            <span>Comentado em: <i>{{comentario.comentadoEm | date: 'short'}}</i></span>
+                        </div>
+                    </div>
+                    <p>"{{comentario.comentario}}"</p>
+                    <div id="star-rating">
+                        <button mat-icon-button class="ic"
+                            *ngFor="let rating_id of array_comentarios_usuarios_avaliacao;index as i">
+                            <mat-icon>{{showIcon(comentario.estrelas, i)}}</mat-icon>
+                        </button>
+                    </div>
+                </mat-card>
             </mat-card>
         </div>
 

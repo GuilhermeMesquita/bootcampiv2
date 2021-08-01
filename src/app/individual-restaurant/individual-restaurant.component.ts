@@ -23,7 +23,7 @@ export class IndividualRestaurantComponent implements OnInit {
     {
       comentario: 'Realmente ótimo restaurante',
       estrelas: 1,
-      comentadoEm: new Date()
+      comentado_em: new Date()
     }
   ];
 
@@ -60,25 +60,42 @@ export class IndividualRestaurantComponent implements OnInit {
   }
 
   sendComment() {
-    const comentario = {
-      comentario: this.comentario_usuario,
-      estrelas: this.avaliacao_usuario,
-      comentadoEm: new Date()
-    }
-
-    this.array_comentarios_usuarios.push(comentario)
-    this.listComments(this.restaurante.estrelas);
+    this._restaurants_service
+      .createUserComment(this.restaurante.id, 'idprovisorio', {
+        comentario: this.comentario_usuario,
+        estrelas: this.avaliacao_usuario,
+        comentado_em: new Date(),
+        autor: {
+          nome: "Guilherme Rocha",
+          foto: "",
+          uid: "idprovisorio"
+        }
+      }).then(() => this.comentario_usuario = "");
   }
 
   listComments(param: number) {
     this.media_geral = [];
+    this._restaurants_service.listRestaurantComment(this.restaurante.id)
+      .subscribe(comentarios => {
+        this.comentario_usuario = comentarios.map(comentario => comentario);
+        comentarios.forEach(comentario => {
+          return this.media_geral.push(comentario["estrelas"]);
+        });
+      });
     this.array_comentarios_usuarios.forEach((comentario: any) => {
-      this.media_geral.push(comentario.estrelas);
+      this.media_geral.push(comentario["estrelas"]);
     });
     this.media_geral.push(param);
     const sum = this.media_geral.reduce((a: number, b: number) => a + b, 0);
     const toDisplay = Math.round(sum / this.media_geral.length);
     return this.avaliacao = toDisplay;
+  }
+
+  formatDate(seconds: number) {
+    const data = new Date(seconds * 1000).toLocaleDateString();
+    const horario = new Date(seconds * 1000).toLocaleTimeString();
+
+    return `${data} às ${horario}`;
   }
 
 }
