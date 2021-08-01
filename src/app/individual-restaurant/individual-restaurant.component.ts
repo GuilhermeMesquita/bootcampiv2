@@ -1,3 +1,4 @@
+import { RestaurantsService } from './../shared/restaurants.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -29,7 +30,8 @@ export class IndividualRestaurantComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<IndividualRestaurantComponent>,
     @Inject(MAT_DIALOG_DATA) public restaurante: any,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar) { }
+    public snackBar: MatSnackBar,
+    private _restaurants_service: RestaurantsService) { }
 
   ngOnInit(): void {
     for (let index = 0; index < this.estrelas_contador; index++) {

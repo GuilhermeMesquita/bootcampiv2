@@ -1,14 +1,17 @@
+
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from "rxjs/operators";
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class RestaurantsService {
-  private basePath = "/restaurant";
+  private basePath = "/restaurants";
+
   constructor(
     private _fireStore: AngularFirestore,
     private _fireStorage: AngularFireStorage,

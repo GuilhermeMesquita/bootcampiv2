@@ -28,6 +28,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { NewRestaurantComponent } from './new-restaurant/new-restaurant.component';
 import { IndividualRestaurantComponent } from './individual-restaurant/individual-restaurant.component';
+import { RestaurantFilterPipe } from './shared/restaurant-filter.pipe';
 
 
 
@@ -36,7 +37,8 @@ import { IndividualRestaurantComponent } from './individual-restaurant/individua
     AppComponent,
     RestaurantsComponent,
     NewRestaurantComponent,
-    IndividualRestaurantComponent
+    IndividualRestaurantComponent,
+    RestaurantFilterPipe
   ],
   imports: [
 

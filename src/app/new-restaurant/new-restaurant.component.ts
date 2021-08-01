@@ -1,3 +1,4 @@
+import { RestaurantsService } from './../shared/restaurants.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -27,7 +28,8 @@ export class NewRestaurantComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
     private _http: HttpClient,
-    public dialogRef: MatDialogRef<NewRestaurantComponent>) { }
+    public dialogRef: MatDialogRef<NewRestaurantComponent>,
+    private _restaurantes_service: RestaurantsService) { }
 
   ngOnInit(): void {
     this.data = this.data["siglas"];
@@ -82,6 +84,12 @@ export class NewRestaurantComponent implements OnInit {
       autor_restaurante: this.data.usuario,
       criado_em: new Date(),
       estrelas: this.avaliacao
+    }
+
+    if (this.arquivo_selecionado) {
+      this._restaurantes_service.pushFileToStorage(avaliacao, this.arquivo_anexado);
+    } else {
+      alert("Parece que não foi inserido nenhum arquivo de imagem.");
     }
 
     this.dialogRef.close(avaliacao);

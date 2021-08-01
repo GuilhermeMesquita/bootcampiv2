@@ -13,7 +13,7 @@
 
                 <!-- nessa parte  '(selectionChange)="searchCity(novo_restaurante.value.estado)' você chama a função criada no seu component.ts -->
                 <mat-select formControlName="estado" (selectionChange)="searchCity(novo_restaurante.value.estado)">
-                    <mat-option [value]="estado" *ngFor="let estado of data">{{estado.nome}}</mat-option>
+                    <mat-option [value]="estado" *ngFor="let estado of data">{{estado["nome"]}}</mat-option>
                 </mat-select>
             </mat-form-field>
 
