@@ -23,7 +23,7 @@
         </mat-form-field>
 
         <section id="restaurantes-cards">
-            <mat-card *ngFor="let restaurante of restaurantes | restaurante_filter: pesquisar">
+            <mat-card *ngFor="let restaurante of restaurantes">
                 <mat-card-title>
                     {{restaurante["nome"]}}
                 </mat-card-title>
