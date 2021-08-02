@@ -29,6 +29,11 @@ import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { NewRestaurantComponent } from './new-restaurant/new-restaurant.component';
 import { IndividualRestaurantComponent } from './individual-restaurant/individual-restaurant.component';
 import { RestaurantFilterPipe } from './shared/restaurant-filter.pipe';
+import { LoginPageComponent } from './login-page/login-page.component';
+
+/**Tradução */
+import { registerLocaleData } from '@angular/common';
+import localeBr from '@angular/common/locales/pt';
 
 
 
@@ -38,7 +43,8 @@ import { RestaurantFilterPipe } from './shared/restaurant-filter.pipe';
     RestaurantsComponent,
     NewRestaurantComponent,
     IndividualRestaurantComponent,
-    RestaurantFilterPipe
+    RestaurantFilterPipe,
+    LoginPageComponent
   ],
   imports: [
 

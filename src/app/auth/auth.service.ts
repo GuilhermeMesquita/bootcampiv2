@@ -1,7 +1,7 @@
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -9,6 +9,7 @@ import { switchMap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
 
   user$: Observable<any>;
@@ -25,5 +26,30 @@ export class AuthService {
         return of(null);
       }
     }));
+  }
+
+  async googleLogin() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    const credential = await this._fireAuth.signInWithPopup(provider);
+
+    this.updateUserInfo(credential.user);
+  }
+
+  async exit() {
+    await this._fireAuth.signOut();
+    return this.router.navigate(['/']);
+  }
+
+  private updateUserInfo({ uid, email, display_name, photo_url }: any) {
+    const referencia_usuario = this._fireStore.doc(`usuarios/${uid}`);
+
+    const usuario = {
+      uid,
+      email,
+      display_name,
+      photo_url
+    };
+
+    return referencia_usuario.set(usuario);
   }
 }

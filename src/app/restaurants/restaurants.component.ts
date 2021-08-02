@@ -1,3 +1,5 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from './../auth/auth.service';
 import { IndividualRestaurantComponent } from './../individual-restaurant/individual-restaurant.component';
 import { NewRestaurantComponent } from './../new-restaurant/new-restaurant.component';
 import { Component, OnInit } from '@angular/core';
@@ -16,6 +18,7 @@ import { RestaurantsService } from './../shared/restaurants.service';
 export class RestaurantsComponent implements OnInit {
 
   pesquisar: any;
+  usuario_logado: any;
   siglas: Array<any> = [];
 
   restaurantes: Array<any> = []
@@ -23,13 +26,18 @@ export class RestaurantsComponent implements OnInit {
   constructor(
     private _http: HttpClient,
     private dialog: MatDialog,
-    private _restaurantes_service: RestaurantsService
+    private _restaurantes_service: RestaurantsService,
+    private _auth_service: AuthService,
+    private _snackBar: MatSnackBar
   ) { }
 
 
   ngOnInit(): void {
     /**Requisição */
     this.listRestaurants();
+    this._auth_service.user$.subscribe(userInfos => {
+      this.usuario_logado = userInfos;
+    });
 
     this._http.get('https://servicodados.ibge.gov.br/api/v1/localidades/regioes/1|2|3|4|5/estados').subscribe((res: any) => {
       let estados = res;
@@ -47,7 +55,7 @@ export class RestaurantsComponent implements OnInit {
     await this._restaurantes_service.listRestaurant()
       .subscribe(rests => {
         this.restaurantes = rests.map(rest => rest);
-        this.restaurantes = this.restaurantes.sort((a, b) => b.criadoEm.seconds - a.criadoEm.seconds);
+        this.restaurantes = this.restaurantes.sort((a, b) => b.criado_em.seconds - a.criado_em.seconds);
       });
   }
 

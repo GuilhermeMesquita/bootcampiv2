@@ -1,0 +1,71 @@
+section {
+    display: flex;
+}
+section #icon {
+    width: 65%;
+    height: 100vh;
+    background-image: url('../../assets/backgroung-login.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+section #login {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 35%;
+    height: 100vh;
+    padding: 0 16px;
+}
+section #login img {
+    width: 80%;
+    margin: 0 auto;
+}
+section #login div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+section #login div h2 {
+    text-align: center;
+}
+section #login div button {
+    width: 50%;
+    margin: 0 auto;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+section #login div button img {
+    width: 100%;
+}
+@media screen and (max-width: 1167px) {
+    section #login h1 {
+        font-size: 28px;
+   }
+    section #login div p, section #login div button {
+        font-size: 18px;
+   }
+    section #login div button mat-icon {
+        font-size: 22px;
+   }
+}
+@media screen and (max-width: 965px) {
+    section #login h1 {
+        font-size: 24px;
+   }
+}
+@media screen and (max-width: 800px) {
+    section {
+        flex-direction: column-reverse;
+   }
+    section #icon, section #login {
+        width: 100%;
+   }
+}
+@media screen and (max-width: 600px) {
+    section #icon mat-icon {
+        font-size: 300px;
+   }
+}
