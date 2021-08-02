@@ -42,8 +42,7 @@ export class RestaurantsService {
   }
 
   createUserComment(restaurantId: string, userId: string, rating: object) {
-    return this._fireStore.collection('restaurants')
-      .doc(restaurantId).collection('ratings').doc(userId).set(rating);
+    return this._fireStore.collection('restaurants').doc(restaurantId).collection('ratings').doc(userId).set(rating);
   }
 
   listRestaurantComment(restaurantId: string) {

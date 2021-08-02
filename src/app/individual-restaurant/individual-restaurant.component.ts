@@ -11,6 +11,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class IndividualRestaurantComponent implements OnInit {
 
+  usuario_logado: any;
+
   media_geral: Array<any> = [];
   array_avaliacao: Array<number> = [];
   avaliacao: number = 5;
@@ -60,17 +62,16 @@ export class IndividualRestaurantComponent implements OnInit {
   }
 
   sendComment() {
-    this._restaurants_service
-      .createUserComment(this.restaurante.id, 'idprovisorio', {
-        comentario: this.comentario_usuario,
-        estrelas: this.avaliacao_usuario,
-        comentado_em: new Date(),
-        autor: {
-          nome: "Guilherme Rocha",
-          foto: "",
-          uid: "idprovisorio"
-        }
-      }).then(() => this.comentario_usuario = "");
+    this._restaurants_service.createUserComment(this.restaurante.id, 'idprovisorio', {
+      comentario: this.comentario_usuario,
+      estrelas: this.avaliacao_usuario,
+      comentado_em: new Date(),
+      autor: {
+        nome: "Guilherme Rocha",
+        foto: "",
+        uid: "idprovisorio"
+      }
+    }).then(() => this.comentario_usuario = "");
   }
 
   listComments(param: number) {

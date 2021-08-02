@@ -81,7 +81,7 @@ export class NewRestaurantComponent implements OnInit {
       estado: this.novo_restaurante.value.estado,
       cidade: this.novo_restaurante.value.cidade,
       descricao: this.novo_restaurante.value.descricao,
-      autor_restaurante: this.data.usuario,
+      autor_restaurante: "Guilherme Rocha",
       criado_em: new Date(),
       estrelas: this.avaliacao
     }
