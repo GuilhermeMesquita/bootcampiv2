@@ -31,7 +31,8 @@
                     {{restaurante["descricao"]}}
                 </mat-card-subtitle>
                 <p style="font-size: 10px; text-align: left; font-weight: 600;">
-                    Criado por: {{restaurante["autor_restaurante"]}} em {{restaurante["criado_em "] | date:
+                    Criado por: {{restaurante["autor_restaurante"]["displayName"]}} em {{restaurante["criado_em"] |
+                    date:
                     "MMMM d, y,
                     h:mm:ss a": "IST": "pt"}}
                 </p>

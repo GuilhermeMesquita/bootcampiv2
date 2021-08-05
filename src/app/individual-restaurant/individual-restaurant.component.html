@@ -32,8 +32,9 @@
             <mat-card *ngFor="let comentario of array_comentarios_usuarios">
                 <div id="usuario">
                     <div>
-                        <img [src]="comentario.foto" width="30">
-                        <span>{{ comentario.nome }} - <i>{{ formatDate(comentario.comentado_em.seconds)
+                        <img [src]="comentario.autor.foto" width="30">
+                        <span>{{ comentario.autor.nome }} - <i>{{
+                                formatDate(comentario.comentado_em.seconds)
                                 }}</i></span>
                     </div>
                     <mat-icon id="excluir-comentario" (click)="deleteComment(comentario)"
