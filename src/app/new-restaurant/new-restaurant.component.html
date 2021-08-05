@@ -13,7 +13,7 @@
 
                 <!-- nessa parte  '(selectionChange)="searchCity(novo_restaurante.value.estado)' você chama a função criada no seu component.ts -->
                 <mat-select formControlName="estado" (selectionChange)="searchCity(novo_restaurante.value.estado)">
-                    <mat-option [value]="estado" *ngFor="let estado of data">{{estado["nome"]}}</mat-option>
+                    <mat-option [value]="estado" *ngFor="let estado of siglas">{{estado["nome"]}}</mat-option>
                 </mat-select>
             </mat-form-field>
 
@@ -45,7 +45,7 @@
 
             <div>
                 <button type="button" id="anx" mat-flat-button (click)="fileInput.click()">Anexar Imagem</button>
-                <input hidden (change)="onFileSelect($event)" #fileInput type="file" id="File">
+                <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="File">
             </div>
 
             <div id="imagem-content" (click)="fileInput.click()">

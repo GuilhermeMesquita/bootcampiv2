@@ -32,7 +32,7 @@ export class NewRestaurantComponent implements OnInit {
     private _restaurantes_service: RestaurantsService) { }
 
   ngOnInit(): void {
-    this.data = this.data["siglas"];
+    this.siglas = this.data["siglas"];
     for (let index = 0; index < this.estrelas_contador; index++) {
       this.array_avaliacao.push(index);
     }
@@ -51,7 +51,7 @@ export class NewRestaurantComponent implements OnInit {
     }
   }
 
-  onFileSelect(e: any) {
+  onFileSelected(e: any) {
     if (e.target.files && e.target.files[0]) {
       this.arquivo_anexado = e.target.files[0];
       const reader = new FileReader()
@@ -81,7 +81,7 @@ export class NewRestaurantComponent implements OnInit {
       estado: this.novo_restaurante.value.estado,
       cidade: this.novo_restaurante.value.cidade,
       descricao: this.novo_restaurante.value.descricao,
-      autor_restaurante: "Guilherme Rocha",
+      autor_restaurante: this.data.usuario,
       criado_em: new Date(),
       estrelas: this.avaliacao
     }

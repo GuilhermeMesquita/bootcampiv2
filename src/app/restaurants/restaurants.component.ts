@@ -33,6 +33,9 @@ export class RestaurantsComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this._auth_service.user$.subscribe(userInfos => {
+      this.usuario_logado = userInfos.displayName;
+    });
     /**Requisição */
     this.listRestaurants();
     this._http.get('https://servicodados.ibge.gov.br/api/v1/localidades/regioes/1|2|3|4|5/estados').subscribe((res: any) => {
@@ -46,9 +49,7 @@ export class RestaurantsComponent implements OnInit {
       });
     });
 
-    this._auth_service.user$.subscribe(userInfos => {
-      this.usuario_logado = userInfos;
-    });
+
   }
 
   async listRestaurants() {
@@ -64,7 +65,7 @@ export class RestaurantsComponent implements OnInit {
       width: '80%',
       height: 'max-content',
       data: {
-        usuario: '',
+        usuario: this.usuario_logado,
         siglas: this.siglas
       }
     });
