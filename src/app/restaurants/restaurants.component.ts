@@ -34,7 +34,7 @@ export class RestaurantsComponent implements OnInit {
 
   ngOnInit(): void {
     this._auth_service.user$.subscribe(userInfos => {
-      this.usuario_logado = userInfos.displayName;
+      this.usuario_logado = userInfos;
     });
     /**Requisição */
     this.listRestaurants();
@@ -65,7 +65,7 @@ export class RestaurantsComponent implements OnInit {
       width: '80%',
       height: 'max-content',
       data: {
-        usuario: this.usuario_logado,
+        usuario: this.usuario_logado.displayName,
         siglas: this.siglas
       }
     });

@@ -22,13 +22,7 @@ export class IndividualRestaurantComponent implements OnInit {
   array_avaliacao_usuario: Array<number> = [];
   array_comentarios_usuarios_avaliacao: Array<number> = [];
   comentario_usuario: any;
-  array_comentarios_usuarios: Array<any> = [
-    {
-      comentario: 'Realmente ótimo restaurante',
-      estrelas: 1,
-      comentado_em: new Date()
-    }
-  ];
+  array_comentarios_usuarios: Array<any> = [];
 
   constructor(public dialogRef: MatDialogRef<IndividualRestaurantComponent>,
     @Inject(MAT_DIALOG_DATA) public restaurante: any,
@@ -50,7 +44,7 @@ export class IndividualRestaurantComponent implements OnInit {
     }
     this.listComments(this.restaurante.estrelas);
     this._auth_service.user$.subscribe(userInfos => {
-      this.usuario_logado = userInfos.displayName;
+      this.usuario_logado = userInfos;
     });
   }
 
