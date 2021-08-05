@@ -82,7 +82,7 @@ export class NewRestaurantComponent implements OnInit {
       cidade: this.novo_restaurante.value.cidade,
       descricao: this.novo_restaurante.value.descricao,
       autor_restaurante: this.data.usuario,
-      criado_em: new Date(),
+      criado_em: new Date().toLocaleDateString(),
       estrelas: this.avaliacao
     }
 

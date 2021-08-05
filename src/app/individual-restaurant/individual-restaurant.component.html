@@ -36,7 +36,8 @@
                         <span>{{ comentario.autor.nome }} - <i>{{ formatDate(comentario.comentado_em.seconds)
                                 }}</i></span>
                     </div>
-                    <mat-icon id="excluir-comentario">
+                    <mat-icon id="excluir-comentario" (click)="deleteComment(comentario)"
+                        *ngIf="usuario_logado && comentario && usuario_logado.uid === comentario.autor.uid">
                         delete
                     </mat-icon>
 

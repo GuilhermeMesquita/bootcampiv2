@@ -1,3 +1,4 @@
+import { AuthService } from './../auth/auth.service';
 import { RestaurantsService } from './../shared/restaurants.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -33,9 +34,11 @@ export class IndividualRestaurantComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public restaurante: any,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    private _restaurants_service: RestaurantsService) { }
+    private _restaurants_service: RestaurantsService,
+    private _auth_service: AuthService) { }
 
   ngOnInit(): void {
+
     for (let index = 0; index < this.estrelas_contador; index++) {
       this.array_avaliacao.push(index);
     }
@@ -45,7 +48,10 @@ export class IndividualRestaurantComponent implements OnInit {
     for (let index = 0; index < this.estrelas_contador; index++) {
       this.array_comentarios_usuarios_avaliacao.push(index);
     }
-    this.listComments(this.restaurante.estrelas)
+    this.listComments(this.restaurante.estrelas);
+    this._auth_service.user$.subscribe(userInfos => {
+      this.usuario_logado = userInfos.displayName;
+    });
   }
 
   showIcon(contagem: number, index: number) {
@@ -62,14 +68,14 @@ export class IndividualRestaurantComponent implements OnInit {
   }
 
   sendComment() {
-    this._restaurants_service.createUserComment(this.restaurante.id, 'idprovisorio', {
+    this._restaurants_service.createUserComment(this.restaurante.id, this.usuario_logado.uid, {
       comentario: this.comentario_usuario,
       estrelas: this.avaliacao_usuario,
       comentado_em: new Date(),
       autor: {
-        nome: "Guilherme Rocha",
-        foto: "",
-        uid: "idprovisorio"
+        nome: this.usuario_logado.displayName,
+        foto: this.usuario_logado.photoURL,
+        uid: this.usuario_logado.uid
       }
     }).then(() => this.comentario_usuario = "");
   }
@@ -97,6 +103,17 @@ export class IndividualRestaurantComponent implements OnInit {
     const horario = new Date(seconds * 1000).toLocaleTimeString();
 
     return `${data} às ${horario}`;
+  }
+
+  deleteComment(comentario: any) {
+    if (window.confirm('Deseja mesmo excluir esse comentário?')) {
+      this._restaurants_service.deleteComment(this.restaurante.id, comentario.autor.uid);
+      this.snackBar.open('Comentário excluido com sucesso.', 'X', {
+        verticalPosition: 'top',
+        horizontalPosition: 'right',
+        duration: 5000
+      })
+    }
   }
 
 }

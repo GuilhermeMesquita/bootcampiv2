@@ -35,6 +35,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { registerLocaleData } from '@angular/common';
 import localeBr from '@angular/common/locales/pt';
 
+registerLocaleData(localeBr, 'pt')
 
 
 @NgModule({
