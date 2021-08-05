@@ -78,16 +78,24 @@ export class IndividualRestaurantComponent implements OnInit {
 
   listComments(param: number) {
     this.media_geral = [];
-    this._restaurants_service.listRestaurantComment(this.restaurante.id).subscribe(comentarios => {
-      this.array_comentarios_usuarios = comentarios.map(comentario => comentario);
-      comentarios.forEach(comentario => {
-        return this.media_geral.push(comentario["estrelas"]);
+    this._restaurants_service.listRestaurantComment(this.restaurante.id)
+      .subscribe(comentarios => {
+        this.array_comentarios_usuarios = comentarios.map(comentario => comentario);
+        comentarios.forEach(comentario => {
+          return this.media_geral.push(comentario["estrelas"]);
+        });
+        this.media_geral.push(param);
+        const sum = this.media_geral.reduce((a: number, b: number) => a + b, 0);
+        const toDisplay = Math.round(sum / this.media_geral.length);
+        return this.avaliacao = toDisplay;
       });
-      this.media_geral.push(param);
-      const sum = this.media_geral.reduce((a: number, b: number) => a + b, 0);
-      const toDisplay = Math.round(sum / this.media_geral.length);
-      return this.avaliacao = toDisplay;
+    this.array_comentarios_usuarios.forEach((comentario: any) => {
+      this.media_geral.push(comentario["estrelas"]);
     });
+    this.media_geral.push(param);
+    const sum = this.media_geral.reduce((a: number, b: number) => a + b, 0);
+    const toDisplay = Math.round(sum / this.media_geral.length);
+    return this.avaliacao = toDisplay;
   }
 
   formatDate(seconds: number) {
