@@ -65,7 +65,7 @@ export class RestaurantsComponent implements OnInit {
       width: '80%',
       height: 'max-content',
       data: {
-        usuario: this.usuario_logado.displayName,
+        usuario: this.usuario_logado,
         siglas: this.siglas
       }
     });
