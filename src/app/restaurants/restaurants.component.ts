@@ -35,10 +35,6 @@ export class RestaurantsComponent implements OnInit {
   ngOnInit(): void {
     /**Requisição */
     this.listRestaurants();
-    this._auth_service.user$.subscribe(userInfos => {
-      this.usuario_logado = userInfos;
-    });
-
     this._http.get('https://servicodados.ibge.gov.br/api/v1/localidades/regioes/1|2|3|4|5/estados').subscribe((res: any) => {
       let estados = res;
       estados = estados.sort((a: any, b: any) => (a.nome > b.nome) ? 1 : -1);
@@ -48,6 +44,10 @@ export class RestaurantsComponent implements OnInit {
           sigla: estados["sigla"]
         })
       });
+    });
+
+    this._auth_service.user$.subscribe(userInfos => {
+      this.usuario_logado = userInfos;
     });
   }
 
@@ -76,7 +76,7 @@ export class RestaurantsComponent implements OnInit {
   }
 
   exit() {
-    console.log("close restaurant.");
+    this._auth_service.exit();
   }
 
   openRestaurant(restaurante: any) {
