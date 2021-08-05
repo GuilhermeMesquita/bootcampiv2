@@ -40,14 +40,14 @@ export class AuthService {
     return this.router.navigate(['/']);
   }
 
-  private updateUserInfo({ uid, email, display_name, photo_url }: any) {
+  private updateUserInfo({ uid, email, displayName, photoURL }: any) {
     const referencia_usuario = this._fireStore.doc(`usuarios/${uid}`);
 
     const usuario = {
       uid,
       email,
-      display_name,
-      photo_url
+      displayName,
+      photoURL
     };
 
     return referencia_usuario.set(usuario);
