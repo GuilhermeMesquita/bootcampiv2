@@ -1,0 +1,12 @@
+runtime: python27
+api_version: 1
+threadsafe: yes
+service: default
+handlers:
+    - url: /
+      static_files: dist/findfood/index.html
+      upload: dist/findfood/index.html
+      secure: always
+    - url: /
+      static_dir: dist/findfood
+      secure: always

@@ -1,16 +1,21 @@
 <section>
     <header>
-        <button mat-button [matMenuTriggerFor]="menu">Opções</button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="newRestaurant()">
-                <mat-icon>add</mat-icon>
-                Cadastrar Restaurantes
+        <mat-card class="header">
+            <mat-card-title><img src="/assets/findfood.png" style="width: 110px; height: 20px;"></mat-card-title>
+            <button mat-button [matMenuTriggerFor]="menu" id="cog">
+                <mat-icon>settings</mat-icon>
             </button>
-            <button mat-menu-item (click)="exit()">
-                <mat-icon>logout</mat-icon>
-                Sair
-            </button>
-        </mat-menu>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="newRestaurant()">
+                    <mat-icon>add</mat-icon>
+                    Cadastrar Restaurantes
+                </button>
+                <button mat-menu-item (click)="exit()">
+                    <mat-icon>logout</mat-icon>
+                    Sair
+                </button>
+            </mat-menu>
+        </mat-card>
     </header>
 
     <div id="restaurantes">
@@ -49,7 +54,4 @@
             </mat-card>
         </section>
     </div>
-
-
-
 </section>

@@ -2,11 +2,3 @@
 :root {
     --main-app-color: #F8485E;
 }
-
-.header{
-    background-color: #F8485E;
-}
-
-.header mat-card-title {
-    color: #FFF;
-}
