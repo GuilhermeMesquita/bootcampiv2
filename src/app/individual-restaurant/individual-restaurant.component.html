@@ -41,22 +41,14 @@
                         *ngIf="usuario_logado && comentario && usuario_logado.uid === comentario.autor.uid">
                         delete
                     </mat-icon>
-
                 </div>
-                <mat-card *ngFor="let comentario of array_comentarios_usuarios">
-                    <div id="usuario">
-                        <div>
-                            <span>Comentado em: <i>{{comentario.comentado_em | date: 'short'}}</i></span>
-                        </div>
-                    </div>
-                    <p>"{{comentario.comentario}}"</p>
-                    <div id="star-rating">
-                        <button mat-icon-button class="ic"
-                            *ngFor="let rating_id of array_comentarios_usuarios_avaliacao;index as i">
-                            <mat-icon>{{showIcon(comentario.estrelas, i)}}</mat-icon>
-                        </button>
-                    </div>
-                </mat-card>
+                <p>"{{comentario.comentario}}"</p>
+                <div id="star-rating">
+                    <button mat-icon-button class="ic"
+                        *ngFor="let rating_id of array_comentarios_usuarios_avaliacao;index as i">
+                        <mat-icon>{{showIcon(comentario.estrelas, i)}}</mat-icon>
+                    </button>
+                </div>
             </mat-card>
         </div>
 

@@ -48,6 +48,11 @@ export class IndividualRestaurantComponent implements OnInit {
     });
 
     this.listComments(this.restaurante.estrelas);
+
+    this._auth_service.user$
+      .subscribe(userInfos => {
+        this.usuario_logado = userInfos;
+      });
   }
 
   showIcon(contagem: number, index: number) {
