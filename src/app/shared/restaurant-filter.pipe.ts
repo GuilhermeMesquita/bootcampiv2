@@ -7,7 +7,7 @@ export class RestaurantFilterPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     if (!value) return null;
-    if (!args) return null;
+    if (!args) return value;
 
     args = args.toLowerCase();
     return value.filter((data: any) => {

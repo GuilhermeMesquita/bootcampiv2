@@ -23,7 +23,7 @@
         </mat-form-field>
 
         <section id="restaurantes-cards">
-            <mat-card *ngFor="let restaurante of restaurantes">
+            <mat-card *ngFor="let restaurante of restaurantes | restaurante_filter: pesquisar">
                 <mat-card-title>
                     {{restaurante["nome"]}}
                 </mat-card-title>
@@ -31,7 +31,8 @@
                     {{restaurante["descricao"]}}
                 </mat-card-subtitle>
                 <p style="font-size: 10px; text-align: left; font-weight: 600;">
-                    Criado por: {{restaurante["autor_restaurante"]["displayName"]}} em {{restaurante["criado_em"] |
+                    Criado por: {{restaurante["autor_restaurante"]["displayName"]}} em
+                    {{restaurante["criado_em"].seconds * 1000 |
                     date:
                     "MMMM d, y,
                     h:mm:ss a": "IST": "pt"}}

@@ -112,7 +112,7 @@ export class IndividualRestaurantComponent implements OnInit {
         verticalPosition: 'top',
         horizontalPosition: 'right',
         duration: 5000
-      })
+      });
     }
   }
 
